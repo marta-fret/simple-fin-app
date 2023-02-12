@@ -1,10 +1,10 @@
 module.exports = {
   semi: true,
-  trailingComma: "all",
+  trailingComma: 'all',
   singleQuote: true,
-  printWidth: 120,
+  printWidth: 80,
   tabWidth: 2,
   bracketSameLine: false,
   bracketSpacing: true,
-  parser: "typescript",
+  parser: 'typescript',
 };

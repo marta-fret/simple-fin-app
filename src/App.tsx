@@ -1,15 +1,14 @@
 import React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import { AppLayout } from './appLayout/AppLayout';
 import { ROUTES } from './routes';
 import { PageBalance } from './pages/balance/PageBalance';
+import { ThemeProvider } from './theme/ThemeProvider';
 
 export const App: React.FC = () => {
   return (
-    <>
-      <CssBaseline />
+    <ThemeProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AppLayout />}>
@@ -20,6 +19,6 @@ export const App: React.FC = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   );
 };

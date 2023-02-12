@@ -1,19 +1,20 @@
 import React from 'react';
-import styled from '@emotion/styled';
-import { Avatar, Button, Typography } from '@mui/material';
+import { Avatar, Button, styled, Typography } from '@mui/material';
+import { useThemeMode } from '../../theme/ThemeProvider';
+import { ThemeMode } from '../../theme/types';
 
-const StyledContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
+const StyledContainer = styled('div')({
+  display: 'flex',
+  justifyContent: 'flex-end',
+});
 
-const StyledUserInfoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-transform: none;
-  text-align: left;
-  margin-left: 8px;
-`;
+const StyledUserInfoContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  textTransform: 'none',
+  textAlign: 'left',
+  marginLeft: theme.spacing(2),
+}));
 
 interface IAppTopBarProps {
   name: string;
@@ -22,9 +23,18 @@ interface IAppTopBarProps {
 }
 
 export const AppTopBar = ({ name, email, imageUrl }: IAppTopBarProps) => {
+  const { setThemeMode, themeMode } = useThemeMode();
+
   return (
     <StyledContainer>
-      <Button variant="outlined">
+      <Button
+        variant="outlined"
+        onClick={() => {
+          setThemeMode(
+            themeMode === ThemeMode.DARK ? ThemeMode.LIGHT : ThemeMode.DARK,
+          );
+        }}
+      >
         <Avatar src={imageUrl} />
         <StyledUserInfoContainer>
           <Typography variant="button">{name}</Typography>

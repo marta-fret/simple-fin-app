@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from '@emotion/styled';
 
-import { Drawer, Typography } from '@mui/material';
+import { Drawer, styled, Typography } from '@mui/material';
 import List from '@mui/material/List';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
@@ -12,15 +11,15 @@ import { ROUTES } from '../../routes';
 import { SIDEBAR_WIDTH } from '../constants';
 import { NavigationItem } from './NavigationItem';
 
-const paddingLeft = 32;
+const paddingLeftSpacing = 8;
 
-const StyledLogoContainer = styled.div`
-  padding-left: ${paddingLeft}px;
-`;
+const StyledLogoContainer = styled('div')(({ theme }) => ({
+  paddingLeft: theme.spacing(paddingLeftSpacing),
+}));
 
-const StyledHeader = styled(Typography)`
-  padding-left: ${paddingLeft}px;
-` as typeof Typography;
+const StyledHeader = styled(Typography)(({ theme }) => ({
+  paddingLeft: theme.spacing(paddingLeftSpacing),
+}));
 
 export const AppSidebar = () => {
   return (
@@ -39,9 +38,24 @@ export const AppSidebar = () => {
         Zarządzanie
       </StyledHeader>
       <List>
-        <NavigationItem key="users" to={ROUTES.users} label="Użytkownicy" icon={<PeopleAltOutlinedIcon />} />
-        <NavigationItem key="currencies" to={ROUTES.currencies} label="Waluty" icon={<PaidOutlinedIcon />} />
-        <NavigationItem key="balance" to={ROUTES.balance} label="Salda" icon={<FolderOutlinedIcon />} />
+        <NavigationItem
+          key="users"
+          to={ROUTES.users}
+          label="Użytkownicy"
+          icon={<PeopleAltOutlinedIcon />}
+        />
+        <NavigationItem
+          key="currencies"
+          to={ROUTES.currencies}
+          label="Waluty"
+          icon={<PaidOutlinedIcon />}
+        />
+        <NavigationItem
+          key="balance"
+          to={ROUTES.balance}
+          label="Salda"
+          icon={<FolderOutlinedIcon />}
+        />
       </List>
     </Drawer>
   );
