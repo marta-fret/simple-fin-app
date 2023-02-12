@@ -3,10 +3,11 @@ import { Avatar, Button, styled, Typography } from '@mui/material';
 import { useThemeMode } from '../../theme/ThemeProvider';
 import { ThemeMode } from '../../theme/types';
 
-const StyledContainer = styled('div')({
+const StyledContainer = styled('div')(({ theme }) => ({
   display: 'flex',
   justifyContent: 'flex-end',
-});
+  marginBottom: theme.spacing(8),
+}));
 
 const StyledUserInfoContainer = styled('div')(({ theme }) => ({
   display: 'flex',
