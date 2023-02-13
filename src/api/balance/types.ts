@@ -16,4 +16,6 @@ export interface IBalanceResponse {
   data: IPaginated<IBalanceDataDTO>;
   timestamp: number;
 }
-export interface IBalanceParams {}
+export interface IBalanceParams {
+  filters: { daysBack?: number };
+}
